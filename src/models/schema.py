@@ -1,8 +1,9 @@
-from pydantic import BaseModel, SecretStr
+from pydantic import BaseModel
+from pydantic.fields import Field
 from typing import Optional
 
 class UserInput(BaseModel):
-    api_key = SecretStr
+    api_key: str = Field(...)
     topic: str
     username: Optional[str] = ""
     lang: str
