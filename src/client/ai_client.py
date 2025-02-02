@@ -28,7 +28,7 @@ class AIClient:
 Follow EXACTLY!
 - Topic: {user_input.topic}
 - Username (default=random): {user_input.username}
-- Language: {user_input.language}
+- Language: {user_input.lang}
 - Geotag: {user_input.geotag}
 - Further context: {user_input.further_context}
 """
