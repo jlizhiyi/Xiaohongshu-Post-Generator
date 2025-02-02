@@ -2,13 +2,14 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 from src.client.ai_client import AIClient
 from src.models.schema import UserInput
+import uvicorn
 
 app = FastAPI()
 
 @app.post("/generate")
 async def generate_content(user_input: UserInput):
     try:
-        ai_client = AIClient(user_input.api_key.get_secret_value())
+        ai_client = AIClient(user_input.api_key)
         async def stream_response():
             async for chunk in ai_client.respond(user_input):
                 yield f"data: {chunk.model_dump_json()}\n\n"
